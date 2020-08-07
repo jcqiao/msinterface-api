@@ -1,10 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
+//引入控制器 controller
+const { getMscamps, createMscamp } = require("../controllers/mscamps.js");
+
 //http://localhost:5000/api/v1/mscamps
-router.get("/", (req, res) => {
-  res.status(200).json({ success: true, msg: "获取所有米修数据" });
-});
+//当访问根路径时 就跳转 因此get->route 使用get方法执行getMscamps
+router.route("/").get(getMscamps);
 
 router.get("/:id", (req, res) => {
   res
@@ -13,9 +15,7 @@ router.get("/:id", (req, res) => {
 });
 
 //创建数据
-router.post("/", (req, res) => {
-  res.status(200).json({ success: true, msg: "创建米修数据" });
-});
+router.route("/").post(createMscamp);
 
 //更新数据
 router.put("/:id", (req, res) => {
