@@ -41,7 +41,12 @@ app.put("/api/v1/mscamps/:id", (req, res) => {
     .status(200)
     .json({ success: true, msg: `根据${req.params.id}更新米修数据` });
 });
-
+//删除数据
+app.delete("/api/v1/mscamps/:id", (req, res) => {
+  res
+    .status(200)
+    .json({ success: true, msg: `根据${req.params.id}删除米修数据` });
+});
 //获取端口号
 const PORT = process.env.PORT || 3000;
 
