@@ -10,11 +10,18 @@ dotenv.config({
 });
 
 const app = express();
+// 创建中间件 类似于插件功能
+const logger = (req, res, next) => {
+  console.log("中间件运行");
+  next();
+};
+
+app.use(logger);
 
 //创建路由 /: http://localhost:5000
-app.get("/", (req, res) => {
-  res.status(200).json({ success: true, msg: "hi jcq" });
-});
+// app.get("/", (req, res) => {
+//   res.status(200).json({ success: true, msg: "hi jcq" });
+// });
 
 //挂载路由节点 当访问/api/v1/mscamps 时会去执行mscamps中路由
 app.use("/api/v1/mscamps", mscamps);
