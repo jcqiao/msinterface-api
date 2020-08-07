@@ -35,6 +35,12 @@ app.get("/api/v1/mscamps/:id", (req, res) => {
 app.post("/api/v1/mscamps", (req, res) => {
   res.status(200).json({ success: true, msg: "创建米修数据" });
 });
+//更新数据
+app.put("/api/v1/mscamps/:id", (req, res) => {
+  res
+    .status(200)
+    .json({ success: true, msg: `根据${req.params.id}更新米修数据` });
+});
 
 //获取端口号
 const PORT = process.env.PORT || 3000;
