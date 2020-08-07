@@ -12,6 +12,7 @@ dotenv.config({
 const app = express();
 // 创建中间件 类似于插件功能
 const logger = (req, res, next) => {
+  req.data = { msg: "hi everybody" };
   console.log("中间件运行");
   next();
 };
